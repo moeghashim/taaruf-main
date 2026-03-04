@@ -39,3 +39,11 @@ Append-only learning log for commits and deploys. Add new entries only at the en
 - Context: bump=patch; version=0.0.2
 - Branch: main
 - Actor: Ja3ood <moeghashim@users.noreply.github.com>
+## 2026-03-04T22:52:22.880Z
+- Trigger: commit
+- Learning: Closing the release cycle with an explicit Unreleased bucket keeps the next change set structured and prevents changelog drift.
+- Context: chore(release): add [Unreleased] section for next cycle
+- Branch: main
+- Actor: Ja3ood <moeghashim@users.noreply.github.com>
+- Changed Paths:
+  - packages/core/CHANGELOG.md
