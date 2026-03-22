@@ -1,20 +1,39 @@
 #!/usr/bin/env node
 
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const packagesDir = join(process.cwd(), "packages");
-const packageDirs = readdirSync(packagesDir, { withFileTypes: true })
-	.filter((entry) => entry.isDirectory())
-	.map((entry) => entry.name);
+const rootPackageJson = JSON.parse(readFileSync(join(process.cwd(), "package.json"), "utf8"));
+const workspacePatterns = Array.isArray(rootPackageJson.workspaces) ? rootPackageJson.workspaces : [];
+
+function resolveWorkspaceDirs() {
+	const dirs = [];
+	for (const pattern of workspacePatterns) {
+		if (!pattern.endsWith("/*")) {
+			continue;
+		}
+
+		const workspaceRoot = join(process.cwd(), pattern.slice(0, -2));
+		if (!existsSync(workspaceRoot)) {
+			continue;
+		}
+		for (const entry of readdirSync(workspaceRoot, { withFileTypes: true })) {
+			if (!entry.isDirectory()) {
+				continue;
+			}
+			dirs.push(join(workspaceRoot, entry.name));
+		}
+	}
+	return dirs;
+}
 
 const packages = new Map();
 const versionMap = new Map();
 
-for (const dir of packageDirs) {
-	const packagePath = join(packagesDir, dir, "package.json");
+for (const workspaceDir of resolveWorkspaceDirs()) {
+	const packagePath = join(workspaceDir, "package.json");
 	const data = JSON.parse(readFileSync(packagePath, "utf8"));
-	packages.set(dir, { packagePath, data });
+	packages.set(packagePath, { packagePath, data });
 	versionMap.set(data.name, data.version);
 }
 

@@ -17,6 +17,11 @@
 - Keep public APIs in `src/index.ts` (re-export), keep internals in separate modules.
 - No emojis in commit messages or code comments.
 
+## React App Rules
+- In `apps/web`, do not import `useEffect` directly.
+- Prefer render-time derivation, event handlers, and framework data loading over effects.
+- `useMountEffect` is the only allowed mount-only escape hatch for synchronizing with an external system.
+
 ## Commands
 - After code changes (not docs changes): `npm run check`
 - Fix all errors, warnings, and infos before committing.
@@ -34,6 +39,4 @@
 - Keep commit subjects as normal, human-readable summaries (for example `feat(core): add retry guard`).
 - Do not replace commit messages with prompt text.
 - `progress.md` is append-only: only add new entries at the end; never edit prior entries.
-- For substantial agent-generated changes, include a reproducibility prompt:
-  - Prefer adding it to the PR description.
-  - If there is no PR, add a `Repro-Prompt:` trailer in the commit message body.
+- For substantial agent-generated changes, add a `Repro-Prompt:` trailer in the commit message body.

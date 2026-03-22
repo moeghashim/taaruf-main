@@ -66,6 +66,15 @@ function runArgs(command, args) {
 	}
 }
 
+function publishablePackages() {
+	return readdirSync("packages")
+		.map((packageName) => join("packages", packageName, "package.json"))
+		.filter((path) => existsSync(path))
+		.map((path) => JSON.parse(readFileSync(path, "utf8")))
+		.filter((pkg) => pkg.private !== true)
+		.map((pkg) => pkg.name);
+}
+
 function ensureCleanGitTree() {
 	const status = execSync("git status --porcelain", { encoding: "utf8" });
 	if (status.trim()) {
@@ -145,7 +154,9 @@ run("npm run build");
 run("npm run check");
 run("npm test");
 if (publish) {
-	run("npm publish -ws --access public");
+	for (const packageName of publishablePackages()) {
+		runArgs("npm", ["publish", "-w", packageName, "--access", "public"]);
+	}
 } else {
 	console.log("Skipping npm publish by default for starter releases. Pass --publish to publish packages.");
 }

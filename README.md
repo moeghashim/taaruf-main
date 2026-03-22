@@ -1,6 +1,9 @@
 # pi-starter
 
-Monorepo template following the pi-mono style:
+Monorepo starter for solo maintainers shipping both deployable apps and publishable packages:
+- Vercel-ready Next.js app in `apps/web`
+- Shared package workspace in `packages/core`
+- Append-only `progress.md` learning log for solo task memory
 - ESM TypeScript
 - Biome formatting/linting (tabs, indentWidth 3, lineWidth 120)
 - Strict TypeScript
@@ -15,16 +18,34 @@ Inspired by [badlogic/pi-mono](https://github.com/badlogic/pi-mono).
 - Canonical source of agent instructions: `AGENTS.md` at repo root.
 - Keep tool-specific agent config optional and manual.
 - Do not depend on symlink managers for this starter by default.
-- This starter does not enforce local CLI merge blockers; solo maintainers are expected to use judgment and checks before merging.
+- Treat `progress.md` as solo operational memory for commits, releases, and deploys.
+- In `apps/web`, do not import `useEffect` directly. Prefer render-time derivation, event handlers, framework data loading, or `useMountEffect`.
 
 ## Setup
 
 ```bash
+npm run doctor
 npm install
 npm run check
 npm test
 npm run agent:check
 ```
+
+If you switch between `arm64` and `x64`, or between Rosetta and native Node, run `npm run reinstall:clean` to refresh native dependencies.
+
+## Start A Vercel App
+
+`apps/web` is the default app target. Vercel should use `apps/web` as the root directory. No custom `vercel.json` is required for the starter.
+
+```bash
+npm run dev -w @pi-starter/web
+```
+
+See `docs/deploying-to-vercel.md` for the minimal Vercel setup.
+
+## Publish A Package
+
+Shared package code lives in `packages/core`. Release scripts still default to build, validate, and log a learning entry before any publish step.
 
 ## Agent Layer
 
@@ -35,16 +56,20 @@ npm run agent:check
 - `scripts/progress-log.mjs` appends structured learning entries to `progress.md`.
 - `scripts/progress-append-only-check.mjs` enforces append-only `progress.md` changes in pre-commit.
 - `scripts/docs-list.ts` validates docs front matter (`summary`, `read_when`) and prints a docs index.
-- `.codex/prompts/` contains codex-first prompts: `/pickup`, `/handoff`, `/fix`, `/landpr`.
-- `progress.md` is an append-only learning log for commit and deploy events.
+- `.codex/prompts/` contains codex-first prompts: `/pickup`, `/handoff`, `/build-feature`, `/fix`, `/ship`.
+- `progress.md` is an append-only learning log for solo commits, releases, and deploys.
+
+Use `/build-feature` for tracer-bullet feature delivery, `/fix` for end-to-end issue repair, and `/ship` for solo validation plus release/deploy handoff.
 
 ### Agent Commands
 
 ```bash
+npm run doctor
 npm run docs:list
 npm run agent:verify-sync
 npm run agent:sync
 npm run agent:check
+npm run reinstall:clean
 npm run commit:selective -- "chore: message" "path/to/file"
 npm run commit:with-progress -- "chore: message" --learning "What changed and why it matters." -- "path/to/file"
 npm run release:patch -- --learning "What we learned from this release."
@@ -53,6 +78,7 @@ npm run release:patch -- --learning "What we learned from this release." --publi
 
 `npm run release:*` skips `npm publish` by default in this starter. Add `--publish` when you explicitly want to publish packages.
 
-## Packages
+## Workspaces
 
+- `@pi-starter/web`
 - `@pi-starter/core`

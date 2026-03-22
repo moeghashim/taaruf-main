@@ -8,11 +8,13 @@ const REQUIRED_PATHS = [
 	"docs/README.md",
 	"docs/agent-workflow.md",
 	"docs/commands.md",
+	"docs/deploying-to-vercel.md",
 	"progress.md",
 	".codex/prompts/pickup.md",
 	".codex/prompts/handoff.md",
+	".codex/prompts/build-feature.md",
 	".codex/prompts/fix.md",
-	".codex/prompts/landpr.md",
+	".codex/prompts/ship.md",
 ];
 
 const REQUIRED_AGENTS_SNIPPETS = [
@@ -21,6 +23,7 @@ const REQUIRED_AGENTS_SNIPPETS = [
 	"docs/commands.md",
 	"npm run docs:list",
 	"npm run agent:check",
+	"useMountEffect",
 ];
 
 function fail(message) {

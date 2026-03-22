@@ -1,7 +1,9 @@
 node_modules/
+.next/
 dist/
 packages/*/node_modules/
 packages/*/dist/
+apps/*/node_modules/
 *.log
 *.tsbuildinfo
 .DS_Store

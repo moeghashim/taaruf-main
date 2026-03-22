@@ -57,3 +57,23 @@ Append-only learning log for commits and deploys. Add new entries only at the en
   - scripts/release.mjs
   - README.md
   - CONTRIBUTING.md
+## 2026-03-22T13:11:46.547Z
+- Trigger: commit
+- Learning: The starter now defaults to a Vercel-ready app, keeps solo progress logging, and hardens setup against architecture drift and accidental useEffect usage.
+- Context: feat(starter): add solo Vercel app workflow
+- Branch: main
+- Actor: Ja3ood <moeghashim@users.noreply.github.com>
+- Changed Paths:
+  - .codex/prompts
+  - .github/workflows/ci.yml
+  - .gitignore
+  - AGENTS.md
+  - CONTRIBUTING.md
+  - README.md
+  - biome.json
+  - docs
+  - package-lock.json
+  - package.json
+  - scripts
+  - .nvmrc
+  - apps

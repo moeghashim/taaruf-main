@@ -22,3 +22,4 @@ Validation is enforced by `npm run docs:list`.
 
 - `docs/agent-workflow.md`: codex-first agent workflow and guardrails.
 - `docs/commands.md`: in-repo command prompt index.
+- `docs/deploying-to-vercel.md`: minimal Vercel deployment path for `apps/web`.
