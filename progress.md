@@ -126,3 +126,11 @@ Append-only learning log for commits and deploys. Add new entries only at the en
   - .codex/prompts/fix.md
   - .codex/prompts/ship.md
   - README.md
+## 2026-04-04T21:44:59.731Z
+- Trigger: commit
+- Learning: Keeping inspiration links inline in the README preserves provenance without expanding the top-level overview.
+- Context: docs(readme): add inline upstream links
+- Branch: main
+- Actor: Ja3ood <moeghashim@users.noreply.github.com>
+- Changed Paths:
+  - README.md

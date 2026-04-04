@@ -13,7 +13,7 @@ Monorepo starter for solo maintainers shipping both deployable apps and publisha
 - Curated vendored Vercel agent skills for React and UI work
 - Curated vendored Addy Osmani agent skills for context, testing, review, security, and ADR workflows
 
-Inspired by [badlogic/pi-mono](https://github.com/badlogic/pi-mono).
+Inspired by [badlogic/pi-mono](https://github.com/badlogic/pi-mono), [steipete/agent-scripts](https://github.com/steipete/agent-scripts), [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills), and [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills).
 
 ## Agent Rules
 
