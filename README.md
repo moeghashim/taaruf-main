@@ -11,6 +11,7 @@ Monorepo starter for solo maintainers shipping both deployable apps and publisha
 - Optional max-lines-per-file check
 - Codex-first agent starter layer with vendored guardrail scripts
 - Curated vendored Vercel agent skills for React and UI work
+- Curated vendored Addy Osmani agent skills for context, testing, review, security, and ADR workflows
 
 Inspired by [badlogic/pi-mono](https://github.com/badlogic/pi-mono).
 
@@ -54,6 +55,7 @@ Shared package code lives in `packages/core`. Release scripts still default to b
 
 - `agent/manifest.json` pins upstream source and vendored files.
 - `agent/skills-manifest.json` pins a curated Vercel skills subset vendored under `agent/skills/vercel-labs/`.
+- `agent/skills-manifest.addyosmani.json` pins a curated Addy Osmani skills subset vendored under `agent/skills/addyosmani/`.
 - `scripts/agent-sync.mjs` syncs or verifies allowlisted upstream files.
 - `scripts/committer` provides safe path-scoped commits.
 - `scripts/commit-with-progress.mjs` wraps path-scoped commits and appends a required learning entry to `progress.md`.
@@ -63,9 +65,17 @@ Shared package code lives in `packages/core`. Release scripts still default to b
 - `scripts/native-deps.mjs` and `scripts/preflight-native-deps.mjs` fail fast when native dependencies do not match the current machine.
 - `.codex/prompts/` contains codex-first prompts: `/pickup`, `/handoff`, `/build-feature`, `/fix`, `/ship`.
 - `progress.md` is an append-only learning log for solo commits, releases, and deploys.
-- `docs/agent-skills.md` explains which upstream Vercel skills are vendored and how to update them.
+- `docs/agent-skills.md` explains which upstream Vercel and Addy Osmani skills are vendored and how to update them.
+- `docs/architecture-decisions.md` defines the local ADR convention used when architectural choices should outlive the current session.
 
 Use `/build-feature` for tracer-bullet feature delivery, `/fix` for end-to-end issue repair, and `/ship` for solo validation plus release/deploy handoff.
+
+### Skill Packs
+
+- `agent/skills/vercel-labs/*`: UI-focused guidance for React, Next.js, composition, interaction design, and transitions.
+- `agent/skills/addyosmani/*`: process-focused guidance for context setup, test discipline, review rigor, security, and ADRs.
+
+PI Starter vendors only a small subset from each upstream source. The goal is to keep repo-local guidance pinned and stable without adopting an entire external workflow wholesale.
 
 ### Agent Commands
 
@@ -76,6 +86,10 @@ npm run agent:verify-sync
 npm run agent:sync
 npm run skills:verify-sync
 npm run skills:sync
+npm run skills:addy:verify-sync
+npm run skills:addy:sync
+npm run skills:verify-sync:all
+npm run skills:sync:all
 npm run agent:check
 npm run reinstall:clean
 npm run commit:selective -- "chore: message" "path/to/file"

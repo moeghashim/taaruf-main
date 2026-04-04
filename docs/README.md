@@ -2,7 +2,7 @@
 summary: "Documentation index and front-matter contract for PI-Starter"
 read_when:
   - Adding or editing documentation in this repository.
-  - Setting up agent workflows and docs validation.
+  - Setting up agent workflows, ADRs, and docs validation.
 ---
 
 # Docs
@@ -21,6 +21,7 @@ Validation is enforced by `npm run docs:list`.
 ## Current Docs
 
 - `docs/agent-workflow.md`: codex-first agent workflow and guardrails.
-- `docs/agent-skills.md`: curated vendored Vercel skills and update policy.
+- `docs/agent-skills.md`: curated vendored Vercel and Addy Osmani skills plus the update policy.
+- `docs/architecture-decisions.md`: ADR template and local conventions for recording durable technical decisions.
 - `docs/commands.md`: in-repo command prompt index.
 - `docs/deploying-to-vercel.md`: minimal Vercel deployment path for `apps/web`.

@@ -105,3 +105,24 @@ Append-only learning log for commits and deploys. Add new entries only at the en
   - scripts/docs-list.mjs
   - scripts/native-deps.mjs
   - scripts/preflight-native-deps.mjs
+## 2026-04-04T21:35:21.580Z
+- Trigger: commit
+- Learning: A second pinned skill pack can extend the starter's process rigor without replacing the existing Codex-first workflow when manifests, prompts, docs, and validation are kept source-specific.
+- Context: feat(agent): add curated Addy process skill pack
+- Branch: main
+- Actor: Ja3ood <moeghashim@users.noreply.github.com>
+- Changed Paths:
+  - agent/skills-manifest.addyosmani.json
+  - agent/skills/addyosmani
+  - package.json
+  - scripts/agent-check.mjs
+  - AGENTS.md
+  - docs/agent-skills.md
+  - docs/agent-workflow.md
+  - docs/README.md
+  - docs/architecture-decisions.md
+  - .codex/prompts/pickup.md
+  - .codex/prompts/build-feature.md
+  - .codex/prompts/fix.md
+  - .codex/prompts/ship.md
+  - README.md

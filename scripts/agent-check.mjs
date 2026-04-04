@@ -6,9 +6,11 @@ import { existsSync, readFileSync } from "node:fs";
 const REQUIRED_PATHS = [
 	"agent/manifest.json",
 	"agent/skills-manifest.json",
+	"agent/skills-manifest.addyosmani.json",
 	"docs/README.md",
 	"docs/agent-workflow.md",
 	"docs/agent-skills.md",
+	"docs/architecture-decisions.md",
 	"docs/commands.md",
 	"docs/deploying-to-vercel.md",
 	"progress.md",
@@ -27,6 +29,7 @@ const REQUIRED_AGENTS_SNIPPETS = [
 	"npm run docs:list",
 	"npm run agent:check",
 	"npm run skills:verify-sync",
+	"npm run skills:addy:verify-sync",
 	"useMountEffect",
 ];
 
@@ -63,6 +66,8 @@ const requiredScripts = [
 	"agent:sync",
 	"skills:verify-sync",
 	"skills:sync",
+	"skills:addy:verify-sync",
+	"skills:addy:sync",
 	"agent:check",
 	"commit:selective",
 	"commit:with-progress",
@@ -76,5 +81,6 @@ for (const scriptName of requiredScripts) {
 execSync("npm run docs:list", { stdio: "inherit" });
 execSync("npm run agent:verify-sync", { stdio: "inherit" });
 execSync("npm run skills:verify-sync", { stdio: "inherit" });
+execSync("npm run skills:addy:verify-sync", { stdio: "inherit" });
 
 console.log("agent-check: passed.");
