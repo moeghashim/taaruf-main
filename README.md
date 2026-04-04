@@ -10,6 +10,7 @@ Monorepo starter for solo maintainers shipping both deployable apps and publisha
 - `npm run check` gates formatting, linting, and type checking
 - Optional max-lines-per-file check
 - Codex-first agent starter layer with vendored guardrail scripts
+- Curated vendored Vercel agent skills for React and UI work
 
 Inspired by [badlogic/pi-mono](https://github.com/badlogic/pi-mono).
 
@@ -33,6 +34,8 @@ npm run agent:check
 
 If you switch between `arm64` and `x64`, or between Rosetta and native Node, run `npm run reinstall:clean` to refresh native dependencies.
 
+This starter is used across `darwin-x64`, `darwin-arm64`, and Linux environments. Keep `node_modules` machine-local and rerun `npm install` or `npm run reinstall:clean` whenever native dependencies stop matching the current OS or CPU architecture.
+
 ## Start A Vercel App
 
 `apps/web` is the default app target. Vercel should use `apps/web` as the root directory. No custom `vercel.json` is required for the starter.
@@ -50,14 +53,17 @@ Shared package code lives in `packages/core`. Release scripts still default to b
 ## Agent Layer
 
 - `agent/manifest.json` pins upstream source and vendored files.
+- `agent/skills-manifest.json` pins a curated Vercel skills subset vendored under `agent/skills/vercel-labs/`.
 - `scripts/agent-sync.mjs` syncs or verifies allowlisted upstream files.
 - `scripts/committer` provides safe path-scoped commits.
 - `scripts/commit-with-progress.mjs` wraps path-scoped commits and appends a required learning entry to `progress.md`.
 - `scripts/progress-log.mjs` appends structured learning entries to `progress.md`.
 - `scripts/progress-append-only-check.mjs` enforces append-only `progress.md` changes in pre-commit.
-- `scripts/docs-list.ts` validates docs front matter (`summary`, `read_when`) and prints a docs index.
+- `scripts/docs-list.mjs` validates docs front matter (`summary`, `read_when`) and prints a docs index without depending on `tsx`.
+- `scripts/native-deps.mjs` and `scripts/preflight-native-deps.mjs` fail fast when native dependencies do not match the current machine.
 - `.codex/prompts/` contains codex-first prompts: `/pickup`, `/handoff`, `/build-feature`, `/fix`, `/ship`.
 - `progress.md` is an append-only learning log for solo commits, releases, and deploys.
+- `docs/agent-skills.md` explains which upstream Vercel skills are vendored and how to update them.
 
 Use `/build-feature` for tracer-bullet feature delivery, `/fix` for end-to-end issue repair, and `/ship` for solo validation plus release/deploy handoff.
 
@@ -68,6 +74,8 @@ npm run doctor
 npm run docs:list
 npm run agent:verify-sync
 npm run agent:sync
+npm run skills:verify-sync
+npm run skills:sync
 npm run agent:check
 npm run reinstall:clean
 npm run commit:selective -- "chore: message" "path/to/file"

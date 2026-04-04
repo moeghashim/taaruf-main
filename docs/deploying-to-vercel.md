@@ -9,6 +9,8 @@ read_when:
 
 Use Vercel Git integration as the default deployment path for this starter.
 
+This document remains the canonical PI Starter deployment baseline even if you vendor additional upstream Vercel deployment skills later.
+
 ## Project Settings
 
 - Framework preset: Next.js

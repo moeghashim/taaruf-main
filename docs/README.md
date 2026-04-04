@@ -21,5 +21,6 @@ Validation is enforced by `npm run docs:list`.
 ## Current Docs
 
 - `docs/agent-workflow.md`: codex-first agent workflow and guardrails.
+- `docs/agent-skills.md`: curated vendored Vercel skills and update policy.
 - `docs/commands.md`: in-repo command prompt index.
 - `docs/deploying-to-vercel.md`: minimal Vercel deployment path for `apps/web`.

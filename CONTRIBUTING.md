@@ -5,6 +5,7 @@
 - Install: `npm install`
 - Check: `npm run check`
 - Test: `npm test`
+- Reinstall when moving between `darwin-x64`, `darwin-arm64`, Linux, or Rosetta/native Node: `npm run reinstall:clean`
 
 ## Rules
 - Keep changes small and cohesive.
@@ -18,3 +19,4 @@
 - In `apps/web`, do not import `useEffect` directly; use render-time derivation, event handlers, framework data loading, or `useMountEffect`.
 - Keep commit messages as clear summaries (do not use prompt-only commit subjects).
 - For substantial agent-generated changes, include a `Repro-Prompt:` commit trailer.
+- Vendored Vercel skills are pinned through `agent/skills-manifest.json`; use `npm run skills:sync` and `npm run skills:verify-sync` when updating them.

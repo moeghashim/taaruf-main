@@ -25,11 +25,13 @@
 ## Commands
 - After code changes (not docs changes): `npm run check`
 - Fix all errors, warnings, and infos before committing.
+- Keep `node_modules` machine-local. After moving between `darwin-x64`, `darwin-arm64`, Linux, or Rosetta/native modes, run `npm install` or `npm run reinstall:clean` before using native-tooling commands.
 
 ## Agent Workflow
-- Agent workflow docs live in `docs/agent-workflow.md` and command index in `docs/commands.md`.
+- Agent workflow docs live in `docs/agent-workflow.md`, skill guidance in `docs/agent-skills.md`, and command index in `docs/commands.md`.
 - At task start, review recent entries in `progress.md` to understand prior learnings.
 - Run `npm run docs:list` whenever docs are added or updated.
+- Run `npm run skills:verify-sync` after changing vendored Vercel skills or their pinned manifest.
 - Run `npm run agent:check` before handoff to validate docs front matter, AGENTS structure, and vendored sync integrity.
 - Use `npm run commit:selective -- "type(scope): summary" "path/one" "path/two"` for path-scoped commits.
 - For agent-requested commits, use `npm run commit:with-progress -- "type(scope): summary" --learning "what was learned" -- "path/one" "path/two"` so `progress.md` is appended in the same commit.

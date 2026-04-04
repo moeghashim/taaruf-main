@@ -77,3 +77,31 @@ Append-only learning log for commits and deploys. Add new entries only at the en
   - scripts
   - .nvmrc
   - apps
+## 2026-04-04T00:13:11.982Z
+- Trigger: commit
+- Learning: Fast-fail native dependency checks and pinned vendored skills keep the starter reliable across darwin-x64, darwin-arm64, and Linux while preserving updateable upstream guidance.
+- Context: feat(agent): vendor Vercel skills and add multi-arch preflight
+- Branch: main
+- Actor: Ja3ood <moeghashim@users.noreply.github.com>
+- Changed Paths:
+  - .codex/prompts/build-feature.md
+  - .codex/prompts/fix.md
+  - .codex/prompts/pickup.md
+  - .codex/prompts/ship.md
+  - AGENTS.md
+  - CONTRIBUTING.md
+  - README.md
+  - agent/manifest.json
+  - agent/skills-manifest.json
+  - agent/skills
+  - docs/README.md
+  - docs/agent-skills.md
+  - docs/agent-workflow.md
+  - docs/deploying-to-vercel.md
+  - package.json
+  - scripts/agent-check.mjs
+  - scripts/agent-sync.mjs
+  - scripts/doctor.mjs
+  - scripts/docs-list.mjs
+  - scripts/native-deps.mjs
+  - scripts/preflight-native-deps.mjs
