@@ -1,70 +1,38 @@
-const appCards = [
-	{
-		title: "Start a Vercel app",
-		description:
-			"Use apps/web as the default deploy target. Keep the project root on the monorepo and point Vercel at apps/web.",
-		accent: "Deploy from main",
-	},
-	{
-		title: "Publish a package",
-		description:
-			"Keep shared logic in packages/core and ship it with the existing release flow when it earns its own lifecycle.",
-		accent: "Publish is explicit",
-	},
-	{
-		title: "Work with agents",
-		description:
-			"Keep progress logging for solo task memory, use /build-feature for vertical slices, and /ship for final validation.",
-		accent: "No PR ceremony",
-	},
+import Image from "next/image";
+
+const highlights = [
+	"A thoughtful space for Muslims to meet",
+	"Built around clarity, respect, and intention",
+	"Launching soon",
 ];
 
 export default function HomePage() {
 	return (
 		<main className="page-shell">
 			<section className="hero">
-				<p className="eyebrow">Solo Agent Starter</p>
-				<h1>
-					Launch the app first.
-					<br />
-					Publish the package when it matters.
-				</h1>
+				<div className="logo-wrap">
+					<Image
+						src="/taaruf-logo.jpg"
+						alt="Taaruf logo"
+						width={280}
+						height={280}
+						priority
+						className="hero-logo"
+					/>
+				</div>
+				<p className="eyebrow">Taaruf</p>
+				<h1>Build bridges between Muslims to meet.</h1>
 				<p className="hero-copy">
-					PI-Starter now defaults to a Vercel-ready Next.js app, a shared package workspace, and agent guidance
-					designed for one maintainer shipping directly from main.
+					We’re creating a warm, respectful space that helps Muslims connect with intention.
+					Our website is currently being prepared and will be launching soon.
 				</p>
-				<div className="hero-actions">
-					<a className="primary-action" href="https://vercel.com/new">
-						Deploy on Vercel
-					</a>
-					<a className="secondary-action" href="https://github.com/moeghashim/PI-Starter">
-						View the template
-					</a>
+				<div className="pill-row" aria-label="Project highlights">
+					{highlights.map((item) => (
+						<span className="info-pill" key={item}>
+							{item}
+						</span>
+					))}
 				</div>
-			</section>
-
-			<section className="card-grid" aria-label="Starter capabilities">
-				{appCards.map((card) => (
-					<article className="feature-card" key={card.title}>
-						<p className="card-accent">{card.accent}</p>
-						<h2>{card.title}</h2>
-						<p>{card.description}</p>
-					</article>
-				))}
-			</section>
-
-			<section className="workflow-panel">
-				<div>
-					<p className="eyebrow">Default flow</p>
-					<h2>Keep shipping simple.</h2>
-				</div>
-				<pre>
-					<code>{`npm run doctor
-npm install
-npm run check
-npm test
-npm run agent:check`}</code>
-				</pre>
 			</section>
 		</main>
 	);
