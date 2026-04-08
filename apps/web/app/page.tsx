@@ -26,7 +26,7 @@ export default function HomePage() {
 					We’re creating a warm, respectful space that helps Muslims connect with intention.
 					Our website is currently being prepared and will be launching soon.
 				</p>
-				<div className="pill-row" aria-label="Project highlights">
+				<div className="pill-row">
 					{highlights.map((item) => (
 						<span className="info-pill" key={item}>
 							{item}
